@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+configurations {
+    quasar
+}
+
+// ext.jettyVer = '8.1.15.v20140411'      // Spring Boot 1.1.9
+// ext.jettyVer = '9.2.4.v20141103'       // Spring Boot 1.2.0.RC2 & master@20bb9c030504a24187ca72ade3285d86350b8cc0
+// ext.jettyVer = '8.1.16.v20140903'      // Latest Jetty 8.1.x as of 2014-11-29
+ext.jettyVer = '9.2.5.v20141112'       // Latest Jetty 9.2.x as of 2014-11-29
+
+ext.tomcatVer = '7.0.56'               // Spring Boot 1.1.9
+// ext.tomcatVer = '7.0.57'               // Latest Tomcat 7.0.x as of 2014-11-29
+// ext.tomcatVer = '8.0.15'               // Spring Boot 1.2.0.RC2 & master@20bb9c030504a24187ca72ade3285d86350b8cc0 & latest Tomcat 8.0.x as of 2014-11-29
+
+dependencies {
+//    compile 'co.paralleluniverse:comsat-spring-web:0.3.0-SNAPSHOT'
+//    compile 'co.paralleluniverse:quasar-core:0.6.2-SNAPSHOT'
+
+    compile "org.eclipse.jetty:jetty-server:$jettyVer"
+    compile "org.eclipse.jetty:jetty-servlet:$jettyVer"
+    // compile "org.eclipse.jetty:jetty-plus:$jettyVer"
+    // compile "org.eclipse.jetty:jetty-annotations:$jettyVer"
+
+    compile "org.apache.tomcat:tomcat-catalina:$tomcatVer"
+    compile "org.apache.tomcat:tomcat-util:$tomcatVer"
+    compile "org.apache.tomcat.embed:tomcat-embed-core:$tomcatVer"
+    
+    quasar 'co.paralleluniverse:quasar-core:0.6.2-SNAPSHOT@jar'
+}
+
+///////
+// Main
+///////
+
+// mainClassName  = 'app.Tomcat'
+mainClassName  = 'app.Jetty'
+
+applicationDefaultJvmArgs = [\
+//    "-Dco.paralleluniverse.fibers.verifyInstrumentation=true",\
+//    "-javaagent:${configurations.quasar.singleFile}"
+]
+
+defaultTasks 'run'
+
+////////////
+// Compiling
+////////////
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
