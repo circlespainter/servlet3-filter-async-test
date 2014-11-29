@@ -4,6 +4,12 @@ Derived from a (very useful) post here [Micha Kops / hasCode.com Blog] and its s
 
 Filter chain in async mode (servlet spec 3.0+) seems broken in most popular servlet containers.
 
+* Tomcat
+** https://issues.apache.org/bugzilla/show_bug.cgi?id=57284
+* Jetty
+** https://bugs.eclipse.org/bugs/show_bug.cgi?id=433321
+** https://bugs.eclipse.org/bugs/show_bug.cgi?id=453594
+
 ## Getting started
 
 Adjust `build.gradle` to choose container versions and between Tomcat and Jetty, then `gradle run`.
@@ -67,7 +73,8 @@ book-keeping especially coded for such a purpose.
 
 Unfortunately both Jetty and Tomcat containers have problems when `chain.doFilter()` is called in a different thread after putting
 request processing in async mode. Tomcat simply crashes with NPE (7.0.56, 7.0.57 and 8.0.15), while Jetty loses some request fields
-(`contextPath`, `servletContext` and `requestURI` become `null`).
+(`contextPath`, `servletContext` and `requestURI` become `null` in 8.1.15.v20140411, 8.1.16.v20140903, 9.2.4.v20141103 and
+9.2.5.v20141112).
 
 ### A simpler but still async case
 

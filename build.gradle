@@ -39,8 +39,8 @@ dependencies {
 // Main
 ///////
 
-// mainClassName  = 'app.Tomcat'
-mainClassName  = 'app.Jetty'
+mainClassName  = 'app.Tomcat'
+// mainClassName  = 'app.Jetty'
 
 applicationDefaultJvmArgs = [\
 //    "-Dco.paralleluniverse.fibers.verifyInstrumentation=true",\
