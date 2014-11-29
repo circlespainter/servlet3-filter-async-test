@@ -9,6 +9,8 @@ Filter chain in async mode (servlet spec 3.0+) seems broken in most popular serv
 * Jetty
 ** https://bugs.eclipse.org/bugs/show_bug.cgi?id=433321
 ** https://bugs.eclipse.org/bugs/show_bug.cgi?id=453594
+** https://bugs.eclipse.org/bugs/show_bug.cgi?id=453609
+** https://bugs.eclipse.org/bugs/show_bug.cgi?id=446563
 
 ## Getting started
 
@@ -130,6 +132,9 @@ this particular case.
 Here are some possible strategies (and their shortcomings) to dispatch Spring processing to a custom async execution context:
 
 * Starting the async context in a special outmost (i.e. first) filter -> hits bugs in containers
+  * Jetty could be patched by wrapping the request but unfortunately the `doFilter` implementation in (at least) 8.1.5 to 9.2.4
+    assumes either that the request is not wrapped or that the unwrapped one can be found in an internal threadlocal, which is
+    clearly not true when dispatching to a different thread as it is the case when in async mode.
 * Starting the async context in a DispatcherServlet (Springs Web MVC central servlet) initiating Spring special async bookkeeping
   -> Spring request processing invoked by the servlet assumes that the bookkeeping hasn't already been started, so it would need
   to be "patched" with customized beans
