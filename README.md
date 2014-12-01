@@ -5,12 +5,12 @@ Derived from a (very useful) post here [Micha Kops / hasCode.com Blog] and its s
 Filter chain in async mode (servlet spec 3.0+) seems broken in most popular servlet containers.
 
 * Tomcat
-** https://issues.apache.org/bugzilla/show_bug.cgi?id=57284
+  * https://issues.apache.org/bugzilla/show_bug.cgi?id=57284
 * Jetty
-** https://bugs.eclipse.org/bugs/show_bug.cgi?id=433321
-** https://bugs.eclipse.org/bugs/show_bug.cgi?id=453594
-** https://bugs.eclipse.org/bugs/show_bug.cgi?id=453609
-** https://bugs.eclipse.org/bugs/show_bug.cgi?id=446563
+  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=433321
+  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=453594
+  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=453609
+  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=446563
 
 ## Getting started
 
