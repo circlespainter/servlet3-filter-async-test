@@ -11,6 +11,7 @@ Filter chain in async mode (servlet spec 3.0+) seems broken in most popular serv
   * https://bugs.eclipse.org/bugs/show_bug.cgi?id=453594
   * https://bugs.eclipse.org/bugs/show_bug.cgi?id=453609
   * https://bugs.eclipse.org/bugs/show_bug.cgi?id=446563
+  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=454022
 
 ## Getting started
 
