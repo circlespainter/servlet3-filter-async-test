@@ -2,7 +2,7 @@
 
 Derived from a (very useful) post here [Micha Kops / hasCode.com Blog] and its sample code.
 
-Filter chain in async mode (servlet spec 3.0+) seems broken in most popular servlet containers.
+Filter chain in async mode (servlet spec 3.0+) seems severely limited in the servlet spec (the whole filters-servlet processing chain must run in the same thread) and is not always perfectly clear about which parts of the previously existing API surface is meant to interoperate with async features (https://java.net/jira/browse/SERVLET_SPEC-117). As a result the popular Jetty and Tomcat containers have some "rough edges" in async handling, especially in combination with filters.
 
 * Tomcat
   * https://issues.apache.org/bugzilla/show_bug.cgi?id=57284
